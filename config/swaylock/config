@@ -1,0 +1,7 @@
+image=/usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png
+indicator-radius=150
+indicator-thickness=20
+show-keyboard-layout
+show-failed-attempts
+ignore-empty-password
+font-size=22
