@@ -15,7 +15,7 @@
 )
 
 (deflayer shifted
-  S-[   _    _    _   _   _   _    _    _   _   _    S-]  \   _
+  S-[   S-\  (unshift =)  S-grv  +   S-, S-.  S-6 S-7  S-5 S-8    S-]  (unshift \)   _
   _     _    _	  _   _   9   0    _	_   _ 	_    _  S-4  grv
   _     _    _	  _   _	  (unshift ;)   S-;  _   _   _   _    _ 	 _
   _  	_    _	  _   _	  _    S-1  _   _   _   _    _
