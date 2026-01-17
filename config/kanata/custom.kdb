@@ -27,7 +27,7 @@
 ;; kanata starts up. This layer is the standard QWERTY layout except for the
 ;; backtick/grave key (@grl) which is an alias for a tap-hold key.
 (deflayer qwerty
-  grv 1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
   @cap a    s    d    f    g    h    j    k    l    ;    '    ret
   lsft z    x    c    v    b    n    m    ,    .    /    rsft
@@ -38,7 +38,7 @@
 ;; another tap-hold key: @cap. This key retains caps lock functionality when
 ;; quickly tapped but is read as left-control when held.
 (deflayer dvorak
-  grv 1    2    3    4    5    6    7    8    9    0    [    ]    bspc
+  grv  1    2    3    4    5    6    7    8    9    0    [    ]    bspc
   tab  '    ,    .    p    y    f    g    c    r    l    /    =    \
   @cap a    o    e    u    i    d    h    t    n    s    -    ret
   lsft ;    q    j    k    x    b    m    w    v    z    rsft
@@ -49,9 +49,82 @@
 (deflayer halmak
   grv 1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab  w    l    r    b    z    ;    q    u    d    j    [    ]    \
-  @cap s    h    n    t    ,    .    a    e    o    i    '    ret
-  lsft f    m    v    c    /    g    p    x    k    y    rsft
+  @cap @ssg    h    @nnm    t    ,    .    a    e    o    i    '    ret
+  lsft @ffn    @mmt    v    c    /    g    p    x    k    y    rsft
   lctl lmet lalt           spc            ralt @menu rctl
+)
+
+(deflayer colemakdh
+  grv 1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w   f    p    b    j    l    u    y    ;   [    ]    \
+  @cap a    r   s    t    g    m    n    e    i    o    '    ret
+  lsft z   x    c   d    v     k    h    ,    .    /    rsft
+  lctl lmet lalt           spc            ralt @menu rctl
+)
+
+;; Enthium
+(deflayer enthium
+  _    _    _    _    _   _   _    _   _   _   _    _    _    _
+  _    q    y	 o    u	  ;   x    l   d   w   z    _	 _    _
+  _    b    c	 i    e	  a   ,	   k   h   t   n    s	 v
+  _    '    -	 =    .	  /   j	   m   g   p   f    _
+  _    _    _ 	      	  _   	       _   _	_ 
+)
+
+;; Engram
+(deflayer engram
+  _    _    _    _    _   _   _    _   _   _   _    _    _    _
+  _    b    y	 o    u	  '   '  l   d   w   v    z	 S-3    S-2
+  _    c    i	 e    a	  ,   .	   h   t   s   n    q 	 _
+  _    g    x	 j    k	  -   S-/	   r   m   f   p    _
+  _    _    _ 	      	  _   	       _   _	_ 
+)
+
+;; Gallium
+(deflayer gallium
+  _    _    _    _    _   _   _    _   _   _   _    _    _    _
+  _    b    l	 d    c	  v   j  f   o   u   ,    _   _   _
+  _    n    r	 t    s	  g   y	   h   a   e   i   _ 	 _
+  _    x    q	 m    w	  z   k	   p   '   ;   .    _
+  _    _    _ 	      	  _   	       _   _	_ 
+)
+
+(deflayer motion
+  _    _    _    _    _   _    _  _   _   _   _    _    _    _
+  _    _    _   _   _    _   _   _    pgup _  _    _   _  _
+  _    _    _   _   _    home   left  down  up  right  end   _   _ 
+  _    _    _   _   _    _   _       pgdn _    _ _  _ 
+  _    _    _              _              _    _    _
+)
+
+(deflayer numbers
+  _    _    _    _    _    _    nlk  _   _   _   _    _    _    _
+  _    _    C-S-tab C-tab _ XX  S-5    7   8   9   -  _    _    _
+  _    _    C-z  C-y  M-tab XX  /    4   5   6   +    _    _
+  _    C-z  C-x  C-v  C-c  XX   _    1   2  3   .   _
+  _    _    _              0              _    _    _
+)
+(deflayer signs
+  _    _    _    _    _   _    nlk  _   _   _   _    _    _    _
+  _    _    _    _    _   _  S-grv    S-1   S-2   S-3   -  _    _    _
+  _    _    [    ]   S-[   S-]    S-6    S-9   S-0   S-4    grv    _   _
+  _    C-z  C-x  C-v  C-c  /   _    S-7  S-8  -   +   _
+  _    _    _              0              0    _    _
+)
+
+(deflayer func
+  _    _    _    _    _   _    nlk  _   _   _   _    _    _    _
+  _    F1   F2  F3   F4  F5  F6  F7  F8  F9  F10 F11 F12 _
+  _    _    _   _   _    _   _    _  _   _   _   _   _ 
+  _    _    _   _   _    _   _    _  _   _   _   _
+  _    _    _              _              _    _    _
+)
+
+(defvar
+  tap-timeout	200
+  hold-timeout	200
+  tt $tap-timeout
+  ht $hold-timeout
 )
 
 ;; defalias is used to declare a shortcut for a more complicated action to keep
@@ -61,15 +134,29 @@
 ;; Aliases are referred to by `@<alias_name>`.
 (defalias
   ;; tap: rmet , hold: toggle layer-switching layer while held
-  menu (tap-hold 200 200 rmet (layer-toggle layers))
+  menu (tap-hold $tt $ht rmet (layer-toggle layers))
 
   ;; layer-switch changes the base layer.
   dvk (layer-switch dvorak)
   qwr (layer-switch qwerty)
   hmk (layer-switch halmak)
+  cdh (layer-switch colemakdh)
+  eng (layer-switch engram)
+
+  num (layer-toggle numbers)
+  nnm (tap-hold-release $tt $ht n @num)
+
+  sgn (layer-toggle signs)
+  ssg (tap-hold-release $tt $ht  s @sgn)
+
+  fnc (layer-toggle func)
+  ffn (tap-hold-release $tt $ht f @fnc)
+
+  mtn (layer-toggle motion)
+  mmt (tap-hold-release $tt $ht m @mtn)
 
   ;; tap for capslk, hold for lctl
-  cap (tap-hold 200 200 esc lctrl )
+  cap (tap-hold $tt $ht esc lctrl )
 
 )
 
@@ -83,9 +170,10 @@
 ;; underscore _ which means "transparent". Transparent means the base layer
 ;; behaviour is used when pressing that key.
 (deflayer layers
-  _	   @qwr @dvk @hmk lrld _    _    _    _    _    _    _    _    _
+  _    @qwr @dvk @hmk @eng @cdh @num lrld     _    _    _    _    _  _ 
   _    @qwr @dvk lrld _    _    _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _              _              _    _    _
 )
+
